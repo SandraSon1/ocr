@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Numeric Ocrad.js Example</title>
+      
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+
+
+    <body>
+<!-- <script src="ocrad.js"></script> -->
+    <video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Snap Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+        
+
+      <script>
+          // Grab elements, create settings, etc.
+var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+    });
+}
+
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+
+// Trigger photo take
+document.getElementById("snap").addEventListener("click", function() {
+    context.drawImage(video, 0, 0, 640, 480);
+});
+
+// Converts canvas to an image
+function convertCanvasToImage(canvas) {
+    var image = new Image();
+    image.src = canvas.toDataURL("image/png");
+    return image;
+}
+      </script>  
+
+        
+        
+       <!--  <input type="file" onchange="load_file()" id="picker">      
+        <div id="main">
+            <div id="nose">
+              
+            </div>
+            <div id="transcription"></div>
+        </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script src="scripts/script.js"></script> -->
+
+    </body> 
+</html>
+
+
+
